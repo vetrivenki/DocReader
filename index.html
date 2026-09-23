@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DocReader — Document to Voice</title>
+  <meta name="description" content="Read PDF, Word, text and images aloud with AI voice.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="brand">DocReader</div><div class="tag">Document → Voice</div></header>
+<main>
+  <section class="hero">
+    <p class="eyebrow">AI DOCUMENT NARRATION</p>
+    <h1>Turn documents into <span>natural audio.</span></h1>
+    <p>Upload a PDF, Word document, text file, or image. Review the extracted text, generate narration, listen, and download the MP3.</p>
+  </section>
+
+  <section class="card">
+    <div class="steps"><b>1 Upload</b><span>2 Review</span><span>3 Generate</span><span>4 Listen & download</span></div>
+    <label id="drop" class="drop">
+      <input id="file" type="file" accept=".pdf,.docx,.txt,.md,.csv,.json,.yaml,.yml,.png,.jpg,.jpeg,.webp">
+      <strong>Drop a document here</strong>
+      <small>or tap to browse · PDF, DOCX, text, PNG/JPG/WEBP · max 20 MB</small>
+    </label>
+    <div id="fileInfo" class="fileinfo hidden"></div>
+    <button id="extract" class="primary" disabled>Read document</button>
+    <div id="status" class="status"></div>
+  </section>
+
+  <section id="editorCard" class="card hidden">
+    <div class="row"><div><p class="eyebrow">EXTRACTED CONTENT</p><h2>Review narration text</h2></div><span id="count"></span></div>
+    <textarea id="text" rows="16" placeholder="Extracted text appears here..."></textarea>
+    <div class="grid">
+      <label>Voice<select id="voice"><option>marin</option><option>cedar</option><option>coral</option><option>alloy</option><option>ash</option><option>ballad</option><option>echo</option><option>fable</option><option>nova</option><option>onyx</option><option>sage</option><option>shimmer</option></select></label>
+      <label>Style<select id="style"><option value="Speak clearly, naturally, and professionally at a comfortable learning pace.">Professional learning</option><option value="Speak like an engaging technology podcast host. Use a warm, confident tone and natural pauses.">Podcast</option><option value="Speak slowly and clearly for study and note-taking. Emphasize headings and important terminology.">Study mode</option><option value="Speak warmly and conversationally, like explaining the material to a colleague.">Conversational</option></select></label>
+    </div>
+    <button id="generate" class="primary">Generate MP3</button>
+  </section>
+
+  <section id="audioCard" class="card hidden">
+    <p class="eyebrow">YOUR AUDIO</p><h2>Ready to listen</h2>
+    <audio id="audio" controls></audio>
+    <a id="download" class="download" download="docreader.mp3">Download MP3</a>
+  </section>
+
+  <details class="settings card"><summary>Backend settings</summary>
+    <label>Cloud Run API URL<input id="api" placeholder="https://your-docreader-api.run.app"></label>
+    <button id="saveApi">Save API URL</button>
+    <p class="muted">Your OpenAI API key belongs on the backend only. Never place it in this page.</p>
+  </details>
+</main>
+<footer>DocReader · Your files are processed only when you request extraction or narration.</footer>
+<script src="app.js"></script>
+</body></html>
